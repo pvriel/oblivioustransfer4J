@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class AbstractObliviousTransferTest {
 
-    private final static int AMOUNT_OF_CHOICES = 10000;
+    private final static int AMOUNT_OF_CHOICES = 1000;
     private final static int MAX_BIT_LENGTH_VALUES = 65536;
     private final static Random random = new Random();
 

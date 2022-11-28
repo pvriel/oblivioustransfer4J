@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="16b4beb7-e6e7-4b8f-b7ab-fdedfde3915b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/pvriel/oblivioustransfer4j/AbstractObliviousTransferTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/pvriel/oblivioustransfer4j/AbstractObliviousTransferTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +35,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="oblivioustransfer4j" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="oblivioustransfer4j" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="publishing" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -90,7 +96,7 @@
       <recent name="com.github.pvriel.oblivioustransfer4j.alsz13" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.Tests in 'oblivioustransfer4j.test'">
     <configuration name="Tests in 'oblivioustransfer4j.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -112,9 +118,41 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="oblivioustransfer4j [publish]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="env">
+          <map>
+            <entry key="TOKEN" value="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" />
+            <entry key="USERNAME" value="pvriel" />
+          </map>
+        </option>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="publish" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.oblivioustransfer4j [publish]" />
+      <item itemvalue="Gradle.Tests in 'oblivioustransfer4j.test'" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Tests in 'oblivioustransfer4j.test'" />
+        <item itemvalue="Gradle.oblivioustransfer4j [publish]" />
       </list>
     </recent_temporary>
   </component>
@@ -130,7 +168,7 @@
       <workItem from="1669572108651" duration="5618000" />
       <workItem from="1669580109421" duration="4885000" />
       <workItem from="1669622145491" duration="3739000" />
-      <workItem from="1669625914976" duration="474000" />
+      <workItem from="1669625914976" duration="572000" />
     </task>
     <servers />
   </component>
