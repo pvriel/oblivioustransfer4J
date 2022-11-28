@@ -1,0 +1,30 @@
+# oblivioustransfer4J ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
+A Java library for the OT protocols I programmed during my PhD.
+
+***
+
+## How to add this dependency to your project.
+
+We use <a href="https://github.com/pvriel/oblivioustransfer4J/packages/">GitHub packages</a>.
+
+***
+
+## Basic usage example
+
+Using this library is straight-forward; check the 2 main interfaces in the src directory.
+
+***
+
+## Implemented OT protocols
+
+<ul>
+<li><a href="https://doi.org/10.1145/2508859.2516738">[ALSZ13] Optimized n x OT_l protocol.
+<br>Gilad Asharov, Yehuda Lindell, Thomas Schneider, and Michael Zohner. 2013. More efficient oblivious transfer and extensions for faster secure computation. In Proceedings of the 2013 ACM SIGSAC conference on Computer & communications security (CCS '13). Association for Computing Machinery, New York, NY, USA, 535–548. https://doi.org/10.1145/2508859.2516738</a> </li>
+</ul>
+
+***
+
+## Contact
+
+Found a bug, problem, ... or do you have a question about this library?
+<br>Do not hesitate to contact me as soon as possible!
