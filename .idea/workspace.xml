@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16b4beb7-e6e7-4b8f-b7ab-fdedfde3915b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/pvriel/oblivioustransfer4j/ObliviousTransferReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/pvriel/oblivioustransfer4j/ObliviousTransferSender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/pvriel/oblivioustransfer4j/alsz13/ALSZ13ObliviousTransferReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/pvriel/oblivioustransfer4j/alsz13/ALSZ13ObliviousTransferSender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/github/pvriel/oblivioustransfer4j/utils/KDFUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/github/pvriel/oblivioustransfer4j/AbstractObliviousTransferTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/github/pvriel/oblivioustransfer4j/alsz13/ALSZ13ObliviousTransferTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/github/pvriel/oblivioustransfer4j/alsz13/MultiplicativeGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +17,31 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="oblivioustransfer4j" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="oblivioustransfer4j" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -123,7 +130,7 @@
       <workItem from="1669572108651" duration="5618000" />
       <workItem from="1669580109421" duration="4885000" />
       <workItem from="1669622145491" duration="3739000" />
-      <workItem from="1669625914976" duration="418000" />
+      <workItem from="1669625914976" duration="474000" />
     </task>
     <servers />
   </component>
