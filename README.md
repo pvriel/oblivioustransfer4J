@@ -1,6 +1,10 @@
 # oblivioustransfer4J ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
 A Java library for the OT protocols I programmed during my PhD.
 
+[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Coverage](https://badgen.net/badge/coverage/100%25/green)](https://badgen.net/badge/coverage/100%25/green)
+
+
 ***
 
 ## How to add this dependency to your project.
