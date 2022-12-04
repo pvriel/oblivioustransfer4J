@@ -15,7 +15,8 @@ We use <a href="https://github.com/pvriel/oblivioustransfer4J/packages/">GitHub 
 
 ## Basic usage example
 
-Using this library is straight-forward; check the 2 main interfaces in the src directory.
+Using this library is straight-forward. The `oblivioustransfer4j` package contains several sub-packages, e.g. `ot`.
+<br>Check their interfaces to understand how everything is implemented. 
 
 ***
 

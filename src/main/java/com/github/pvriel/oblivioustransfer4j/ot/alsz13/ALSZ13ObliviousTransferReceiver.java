@@ -1,11 +1,10 @@
-package com.github.pvriel.oblivioustransfer4j.alsz13;
+package com.github.pvriel.oblivioustransfer4j.ot.alsz13;
 
-import com.esotericsoftware.kryo.kryo5.Kryo;
-import com.esotericsoftware.kryo.kryo5.io.Input;
-import com.esotericsoftware.kryo.kryo5.io.Output;
-import com.github.pvriel.oblivioustransfer4j.ObliviousTransferReceiver;
+import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferReceiver;
 import com.github.pvriel.oblivioustransfer4j.utils.KDFUtils;
+import com.github.pvriel.oblivioustransfer4j.utils.StreamUtils;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
@@ -17,17 +16,11 @@ import java.util.Random;
  */
 public class ALSZ13ObliviousTransferReceiver implements ObliviousTransferReceiver {
 
-    protected static Kryo kryo = new Kryo();
-    protected static Random random = new SecureRandom();
+    static Random random = new SecureRandom();
 
     private final BigInteger g;
     private final BigInteger q;
     private final BigInteger p;
-    private final int bitLength;
-
-    static {
-        kryo.register(BigInteger.class);
-    }
 
     /**
      * Constructor for the {@link ALSZ13ObliviousTransferReceiver} class.
@@ -37,21 +30,15 @@ public class ALSZ13ObliviousTransferReceiver implements ObliviousTransferReceive
      *          The q value of the group (G, q, g), which should be DDH hard.
      * @param   g
      *          The g value of the group (G, q, g), which should be DDH hard.
-     * @param   bitLength
-     *          The bit length of the values that the receiver will receiver after executing the OT protocol.
      */
-    public ALSZ13ObliviousTransferReceiver(BigInteger p, BigInteger q, BigInteger g, int bitLength) {
+    public ALSZ13ObliviousTransferReceiver(BigInteger p, BigInteger q, BigInteger g) {
         this.p = p;
         this.g = g;
         this.q = q;
-        this.bitLength = bitLength;
     }
 
     @Override
-    public BigInteger[] execute(boolean[] choices, InputStream inputStream, OutputStream outputStream) {
-        Input input = new Input(inputStream);
-        Output output = new Output(outputStream);
-
+    public BigInteger[] execute(boolean[] choices, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException {
         // First round.
         BigInteger[] alpha_i = new BigInteger[choices.length];
         for (int i = 0; i < choices.length; i ++) {
@@ -59,23 +46,23 @@ public class ALSZ13ObliviousTransferReceiver implements ObliviousTransferReceive
             BigInteger g_pow_alpha_i = g.modPow(alpha_i[i], p);
             BigInteger h_i = new BigInteger(p.bitLength(), random).mod(p);
 
-            if (!choices[i]) kryo.writeObject(output, g_pow_alpha_i);
-            kryo.writeObject(output, h_i);
-            if (choices[i]) kryo.writeObject(output, g_pow_alpha_i);
-            output.flush();
+            if (!choices[i]) StreamUtils.writeToOutputStream(g_pow_alpha_i, outputStream);
+            StreamUtils.writeToOutputStream(h_i, outputStream);
+            if (choices[i]) StreamUtils.writeToOutputStream(g_pow_alpha_i, outputStream);
+            outputStream.flush();
         }
 
         // Second and third round.
-        BigInteger u = kryo.readObject(input, BigInteger.class);
+        BigInteger u = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
         BigInteger[] x = new BigInteger[choices.length];
         for (int i = 0; i < choices.length; i ++) {
             BigInteger k_i_delta_i = u.modPow(alpha_i[i], p);
             BigInteger kdf = KDFUtils.KDF(k_i_delta_i, bitLength);
 
             BigInteger chosen_v_i;
-            if (choices[i]) kryo.readObject(input, BigInteger.class);
-            chosen_v_i = kryo.readObject(input, BigInteger.class);
-            if (!choices[i]) kryo.readObject(input, BigInteger.class);
+            if (choices[i]) StreamUtils.readFromInputStream(BigInteger.class, inputStream);
+            chosen_v_i = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
+            if (!choices[i]) StreamUtils.readFromInputStream(BigInteger.class, inputStream);
 
             x[i] = chosen_v_i.xor(kdf);
         }

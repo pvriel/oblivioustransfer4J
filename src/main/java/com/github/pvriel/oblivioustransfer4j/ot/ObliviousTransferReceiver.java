@@ -1,5 +1,6 @@
-package com.github.pvriel.oblivioustransfer4j;
+package com.github.pvriel.oblivioustransfer4j.ot;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
@@ -14,6 +15,9 @@ public interface ObliviousTransferReceiver {
      * @param   choices
      *          The choices of the receiver.
      *          <br>This array should have the same length as the x array at the sender's side.
+     * @param   bitLength
+     *          The maximum bit length of the BigIntegers this receiver should receive.
+     *          <br>Should be the same (greater than zero) value as the one used by the sender.
      * @param   inputStream
      *          The input from the sender.
      *          <br>This stream will not be closed after invoking this method.
@@ -22,5 +26,5 @@ public interface ObliviousTransferReceiver {
      *          <br>This stream will not be closed after invoking this method.
      * @return  The chosen values from the x array (for i in range(len(choices)): x[i][choices[i]]).
      */
-    BigInteger[] execute(boolean[] choices, InputStream inputStream, OutputStream outputStream);
+    BigInteger[] execute(boolean[] choices, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException;
 }
