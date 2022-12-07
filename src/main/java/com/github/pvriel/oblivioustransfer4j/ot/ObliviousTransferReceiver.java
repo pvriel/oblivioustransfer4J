@@ -25,6 +25,8 @@ public interface ObliviousTransferReceiver {
      *          The output to the sender.
      *          <br>This stream will not be closed after invoking this method.
      * @return  The chosen values from the x array (for i in range(len(choices)): x[i][choices[i]]).
+     * @throws  IOException
+     *          If something went wrong with the communication to the {@link ObliviousTransferSender}.
      */
     BigInteger[] execute(boolean[] choices, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException;
 }

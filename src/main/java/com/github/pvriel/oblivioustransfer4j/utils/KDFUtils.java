@@ -15,7 +15,7 @@ public abstract class KDFUtils {
      * @param   element
      *          The element to apply the KDF with.
      * @param   bitLength
-     *          The amount of bits the result BigInteger should consist out of.
+     *          The exact amount of bits the result BigInteger should consist out of.
      * @return  The result of applying the KDF to the 'element' argument.
      */
     public static BigInteger KDF(BigInteger element, int bitLength) {

@@ -5,21 +5,42 @@ import com.github.pvriel.oblivioustransfer4j.utils.ArrayUtils;
 import java.math.BigInteger;
 import java.util.Arrays;
 
+/**
+ * Class representing bit matrices, of which the columns are represented using {@link BigInteger} instances.
+ */
 public class BigIntegerMatrix {
 
     private final BigInteger[] columns;
-    private int amountOfRows;
+    private final int amountOfRows;
 
+    /**
+     * Constructor for the {@link BigIntegerMatrix} class.
+     * @param   columns
+     *          The columns of the matrix.
+     * @param   amountOfRows
+     *          The amount of rows of the matrix.
+     */
     public BigIntegerMatrix(BigInteger[] columns, int amountOfRows) {
         this.columns = columns;
         this.amountOfRows = amountOfRows;
     }
 
+    /**
+     * Constructor for the {@link BigIntegerMatrix} class.
+     * <br>This constructor just calls this(new BigIntegerMatrix(rows, amountOfColumns).transpose().columns, rows.length).
+     * @param   amountOfColumns
+     *          The amount of columns of the matrix.
+     * @param   rows
+     *          The rows of the matrix.
+     */
     public BigIntegerMatrix(int amountOfColumns, BigInteger[] rows) {
-        // TODO: test this.
         this(new BigIntegerMatrix(rows, amountOfColumns).transpose().columns, rows.length);
     }
 
+    /**
+     * Method to transpose the matrix.
+     * @return  The transposed matrix.
+     */
     public BigIntegerMatrix transpose() {
         char[][] currentColumnsAsChars = convertToCharArrays();
         char[][] newColumnsAsChars = ArrayUtils.transpose(currentColumnsAsChars);
@@ -32,6 +53,12 @@ public class BigIntegerMatrix {
         return new BigIntegerMatrix(newColumns, columns.length);
     }
 
+    /**
+     * Method to represent the content of the matrix as a 2D char array.
+     * @return  A 2D char array of lengths columns x rows, where each subarray represents a bit representation of the columns of this matrix.
+     *          <br>In case the bit representation of a columns is shorter than the amount of rows provided to the constructor,
+     *          the bit representation will be padded at the beginning of the array with '0' chars.
+     */
     public char[][] convertToCharArrays() {
         char[][] currentColumnsAsChars = new char[columns.length][amountOfRows];
         for (int i = 0; i < columns.length; i ++) {
@@ -64,6 +91,10 @@ public class BigIntegerMatrix {
         return stringBuilder.toString();
     }
 
+    /**
+     * Getter for the columns of the matrix.
+     * @return  The columns.
+     */
     public BigInteger[] getColumns() {
         return columns;
     }

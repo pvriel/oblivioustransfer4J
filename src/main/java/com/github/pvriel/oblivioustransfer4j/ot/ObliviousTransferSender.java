@@ -25,6 +25,8 @@ public interface ObliviousTransferSender {
      * @param   outputStream
      *          The output to the receiver.
      *          <br>This stream will not be closed after invoking this method.
+     * @throws  IOException
+     *          If something went wrong during the communication with the {@link ObliviousTransferReceiver}.
      */
     void execute(BigInteger[][] x, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException;
 }
