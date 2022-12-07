@@ -2,7 +2,7 @@
 A Java library for the OT protocols I programmed during my PhD.
 
 [![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Coverage](https://badgen.net/badge/coverage/100%25/green)](https://badgen.net/badge/coverage/100%25/green)
+[![Coverage](https://badgen.net/badge/coverage/95%25/green)](https://badgen.net/badge/coverage/95%25/green)
 
 
 ***
@@ -22,6 +22,12 @@ Using this library is straight-forward. The `oblivioustransfer4j` package contai
 
 ## Implemented OT protocols
 
+<ul>
+<li><a href="https://doi.org/10.1145/2508859.2516738">[ALSZ13] Optimized n x OT_l protocol.
+<br>Gilad Asharov, Yehuda Lindell, Thomas Schneider, and Michael Zohner. 2013. More efficient oblivious transfer and extensions for faster secure computation. In Proceedings of the 2013 ACM SIGSAC conference on Computer & communications security (CCS '13). Association for Computing Machinery, New York, NY, USA, 535–548. https://doi.org/10.1145/2508859.2516738</a> </li>
+</ul>
+
+## Implemented OTe protocols
 <ul>
 <li><a href="https://doi.org/10.1145/2508859.2516738">[ALSZ13] Optimized n x OT_l protocol.
 <br>Gilad Asharov, Yehuda Lindell, Thomas Schneider, and Michael Zohner. 2013. More efficient oblivious transfer and extensions for faster secure computation. In Proceedings of the 2013 ACM SIGSAC conference on Computer & communications security (CCS '13). Association for Computing Machinery, New York, NY, USA, 535–548. https://doi.org/10.1145/2508859.2516738</a> </li>

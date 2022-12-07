@@ -1,6 +1,7 @@
 package com.github.pvriel.oblivioustransfer4j.ote.alsz13;
 
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferReceiver;
+import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionReceiver;
 import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionSender;
 import com.github.pvriel.oblivioustransfer4j.utils.ArrayUtils;
 import com.github.pvriel.oblivioustransfer4j.utils.KDFUtils;
@@ -12,7 +13,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
-
+/**
+ * Class representing an implementation of the <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferExtensionSender}.
+ */
 public class ALSZ13ObliviousTransferExtensionSender implements ObliviousTransferExtensionSender {
 
     @Override
