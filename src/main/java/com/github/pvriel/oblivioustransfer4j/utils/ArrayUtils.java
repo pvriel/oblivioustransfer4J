@@ -34,4 +34,17 @@ public abstract class ArrayUtils {
         for (int i = 0; i < choices.length; i ++) if (choices[choices.length - 1 - i]) returnValue = returnValue.setBit(i);
         return returnValue;
     }
+
+    public static String toString(Object[][] array) {
+        StringBuilder stringBuilder = new StringBuilder("[");
+        for (int i = 0; i < array.length; i ++) {
+            stringBuilder.append("[");
+            for (int j = 0; j < array[i].length; j ++) {
+                stringBuilder.append(array[i][j]).append(", ");
+            }
+            stringBuilder.replace(stringBuilder.length() - 2, stringBuilder.length(), "], ");
+        }
+        stringBuilder.replace(stringBuilder.length() - 2, stringBuilder.length(), "]");
+        return stringBuilder.toString();
+    }
 }

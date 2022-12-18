@@ -33,7 +33,6 @@ public abstract class AbstractObliviousTransferExtensionTest {
         List<Triple<Integer,ObliviousTransferExtensionSender, ObliviousTransferExtensionReceiver>> listWithPairs = generateSenderReceiverOTPairsForTesting();
         for (var pair : listWithPairs) {
             System.out.println("Testing with " + pair.getLeft() + " base OTs.");
-            int amountOfBaseOTs = pair.getLeft();
             ObliviousTransferExtensionSender sender = pair.getMiddle();
             ObliviousTransferExtensionReceiver receiver = pair.getRight();
 
@@ -50,19 +49,16 @@ public abstract class AbstractObliviousTransferExtensionTest {
                 PipedInputStream inTwo = new PipedInputStream(100000000);
                 PipedOutputStream outTwo = new PipedOutputStream(inTwo);
 
-                ObliviousTransferSender baseOTsSender = new ALSZ13ObliviousTransferSender(p, q, g);
-                ObliviousTransferReceiver baseOTsReceiver = new ALSZ13ObliviousTransferReceiver(p, q, g);
-
                 int finalI = i;
                 Thread senderThread = new Thread(() -> {
                     try {
-                        sender.execute(x, finalI, amountOfBaseOTs, baseOTsReceiver, inOne, outTwo);
+                        sender.execute(x, finalI, inOne, outTwo);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 });
                 senderThread.start();
-                BigInteger[] receivedValues = receiver.execute(choices, i, amountOfBaseOTs, baseOTsSender, inTwo, outOne);
+                BigInteger[] receivedValues = receiver.execute(choices, i, inTwo, outOne);
                 senderThread.join();
 
                 assertEquals(AMOUNT_OF_CHOICES, receivedValues.length);

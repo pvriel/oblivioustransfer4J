@@ -16,13 +16,17 @@ import java.math.BigInteger;
 /**
  * Class representing an implementation of the <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferExtensionSender}.
  */
-public class ALSZ13ObliviousTransferExtensionSender implements ObliviousTransferExtensionSender {
+public class ALSZ13ObliviousTransferExtensionSender extends ObliviousTransferExtensionSender {
+
+    public ALSZ13ObliviousTransferExtensionSender(int amountOfBaseOTs, ObliviousTransferReceiver baseOTsReceiver) {
+        super(amountOfBaseOTs, baseOTsReceiver);
+    }
 
     @Override
-    public void execute(BigInteger[][] x, int bitLength, int amountOfBaseOTs, ObliviousTransferReceiver baseOTsReceiver, InputStream inputStream, OutputStream outputStream) throws IOException {
+    public void execute(BigInteger[][] x, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException {
         // Initial OT phase.
-        boolean[] s = RandomUtils.generateRandomBooleanArrayOfLength(amountOfBaseOTs);
-        BigInteger[] k_i = baseOTsReceiver.execute(s, amountOfBaseOTs, inputStream, outputStream);
+        boolean[] s = RandomUtils.generateRandomBooleanArrayOfLength(getAmountOfBaseOTs());
+        BigInteger[] k_i = getBaseOTsReceiver().execute(s, getAmountOfBaseOTs(), inputStream, outputStream);
         BigInteger[] t_i = new BigInteger[k_i.length];
         for (int i = 0; i < t_i.length; i ++) t_i[i] = G(k_i[i], x.length);
 

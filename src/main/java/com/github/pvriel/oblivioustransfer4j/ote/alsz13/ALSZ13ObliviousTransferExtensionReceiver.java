@@ -18,13 +18,17 @@ import static com.github.pvriel.oblivioustransfer4j.ote.alsz13.ALSZ13ObliviousTr
 /**
  * Class representing an implementation of the <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferExtensionReceiver}.
  */
-public class ALSZ13ObliviousTransferExtensionReceiver implements ObliviousTransferExtensionReceiver {
+public class ALSZ13ObliviousTransferExtensionReceiver extends ObliviousTransferExtensionReceiver {
+
+    public ALSZ13ObliviousTransferExtensionReceiver(int amountOfBaseOTs, ObliviousTransferSender baseOTsSender) {
+        super(amountOfBaseOTs, baseOTsSender);
+    }
 
     @Override
-    public BigInteger[] execute(boolean[] choices, int bitLength, int amountOfBaseOTs, ObliviousTransferSender baseOTsSender, InputStream inputStream, OutputStream outputStream) throws IOException {
+    public BigInteger[] execute(boolean[] choices, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException {
         // Initial OT phase.
-        BigInteger[][] k_i = RandomUtils.generateRandomBigInteger2DArrayOfLengths(amountOfBaseOTs, 2, amountOfBaseOTs);
-        baseOTsSender.execute(k_i, amountOfBaseOTs, inputStream, outputStream);
+        BigInteger[][] k_i = RandomUtils.generateRandomBigInteger2DArrayOfLengths(getAmountOfBaseOTs(), 2, getAmountOfBaseOTs());
+        getBaseOTsSender().execute(k_i, getAmountOfBaseOTs(), inputStream, outputStream);
 
         // OT extension phase.
         BigInteger r = ArrayUtils.convertToBigInteger(choices);
