@@ -4,14 +4,12 @@ import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferReceiver;
 import com.github.pvriel.oblivioustransfer4j.precomputed.PrecomputedObliviousTransferReceiver;
 import com.github.pvriel.oblivioustransfer4j.utils.RandomUtils;
 import com.github.pvriel.oblivioustransfer4j.utils.StreamUtils;
-import org.apache.commons.lang3.SerializationUtils;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
-import java.util.Arrays;
 
 public class BEA95PrecomputedObliviousTransferReceiver extends PrecomputedObliviousTransferReceiver<Pair<boolean[], BigInteger[]>> {
 

@@ -1,7 +1,6 @@
 package com.github.pvriel.oblivioustransfer4j.ote.alsz13;
 
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferReceiver;
-import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionReceiver;
 import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionSender;
 import com.github.pvriel.oblivioustransfer4j.utils.ArrayUtils;
 import com.github.pvriel.oblivioustransfer4j.utils.KDFUtils;

@@ -78,18 +78,18 @@ public class BigIntegerMatrix {
                 Arrays.equals(columns, ((BigIntegerMatrix) obj).columns);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        char[][] charArray = convertToCharArrays();
-        for (int i = 0; i < charArray[0].length; i ++) {
-            for (int j = 0; j < charArray.length; j ++) {
-                stringBuilder.append(charArray[j][i]).append("\t");
-            }
-            stringBuilder.append(System.lineSeparator());
-        }
-        return stringBuilder.toString();
-    }
+//    @Override
+//    public String toString() {
+//        StringBuilder stringBuilder = new StringBuilder();
+//        char[][] charArray = convertToCharArrays();
+//        for (int i = 0; i < charArray[0].length; i ++) {
+//            for (int j = 0; j < charArray.length; j ++) {
+//                stringBuilder.append(charArray[j][i]).append("\t");
+//            }
+//            stringBuilder.append(System.lineSeparator());
+//        }
+//        return stringBuilder.toString();
+//    }
 
     /**
      * Getter for the columns of the matrix.

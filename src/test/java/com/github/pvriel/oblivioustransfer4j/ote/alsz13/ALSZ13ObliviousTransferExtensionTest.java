@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.github.pvriel.oblivioustransfer4j.ot.alsz13.ALSZ13ObliviousTransferTest.*;
-import static com.github.pvriel.oblivioustransfer4j.ot.alsz13.ALSZ13ObliviousTransferTest.g;
 
 public class ALSZ13ObliviousTransferExtensionTest extends AbstractObliviousTransferExtensionTest {
     @Override

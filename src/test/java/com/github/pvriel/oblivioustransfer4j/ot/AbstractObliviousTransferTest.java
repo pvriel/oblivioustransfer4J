@@ -1,6 +1,5 @@
 package com.github.pvriel.oblivioustransfer4j.ot;
 
-import com.github.pvriel.oblivioustransfer4j.utils.ArrayUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
 
@@ -8,14 +7,13 @@ import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class AbstractObliviousTransferTest {
 
-    public final static int AMOUNT_OF_CHOICES = 4;
+    public final static int AMOUNT_OF_CHOICES = 1000;
     public final static int MAX_BIT_LENGTH_VALUES = 65536;
     private final static Random random = new Random();
 
@@ -28,7 +26,7 @@ public abstract class AbstractObliviousTransferTest {
         ObliviousTransferSender sender = senderReceiverPair.getLeft();
         ObliviousTransferReceiver receiver = senderReceiverPair.getRight();
 
-        for (int i = 4; i <= MAX_BIT_LENGTH_VALUES; i *= 2) {
+        for (int i = 1; i <= MAX_BIT_LENGTH_VALUES; i *= 2) {
 
             System.out.println("Current bit length : %s".formatted(i));
             BigInteger[][] x = new BigInteger[AMOUNT_OF_CHOICES][2];
@@ -59,10 +57,6 @@ public abstract class AbstractObliviousTransferTest {
             for (int j = 0; j < AMOUNT_OF_CHOICES; j ++) {
                 assertNotNull(receivedValues[j]);
                 if (!x[j][choices[j]? 1 : 0].equals(receivedValues[j])) {
-                    System.out.println("FAIL");
-                    System.out.println("x: " + ArrayUtils.toString(x));
-                    System.out.println("choices: " + Arrays.toString(choices));
-                    System.out.println("received values: " + Arrays.toString(receivedValues));
                     fail("Expected value %s, got %s.".formatted(x[j][choices[j]? 1 : 0], receivedValues[j]));
                 }
             }

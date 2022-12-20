@@ -1,9 +1,5 @@
 package com.github.pvriel.oblivioustransfer4j.ote;
 
-import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferReceiver;
-import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferSender;
-import com.github.pvriel.oblivioustransfer4j.ot.alsz13.ALSZ13ObliviousTransferReceiver;
-import com.github.pvriel.oblivioustransfer4j.ot.alsz13.ALSZ13ObliviousTransferSender;
 import org.apache.commons.lang3.tuple.Triple;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import static com.github.pvriel.oblivioustransfer4j.ot.alsz13.ALSZ13ObliviousTransferTest.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public abstract class AbstractObliviousTransferExtensionTest {

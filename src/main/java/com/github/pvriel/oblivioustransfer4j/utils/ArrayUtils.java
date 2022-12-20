@@ -35,16 +35,16 @@ public abstract class ArrayUtils {
         return returnValue;
     }
 
-    public static String toString(Object[][] array) {
-        StringBuilder stringBuilder = new StringBuilder("[");
-        for (int i = 0; i < array.length; i ++) {
-            stringBuilder.append("[");
-            for (int j = 0; j < array[i].length; j ++) {
-                stringBuilder.append(array[i][j]).append(", ");
-            }
-            stringBuilder.replace(stringBuilder.length() - 2, stringBuilder.length(), "], ");
-        }
-        stringBuilder.replace(stringBuilder.length() - 2, stringBuilder.length(), "]");
-        return stringBuilder.toString();
-    }
+//    public static String toString(Object[][] array) {
+//        StringBuilder stringBuilder = new StringBuilder("[");
+//        for (int i = 0; i < array.length; i ++) {
+//            stringBuilder.append("[");
+//            for (int j = 0; j < array[i].length; j ++) {
+//                stringBuilder.append(array[i][j]).append(", ");
+//            }
+//            stringBuilder.replace(stringBuilder.length() - 2, stringBuilder.length(), "], ");
+//        }
+//        stringBuilder.replace(stringBuilder.length() - 2, stringBuilder.length(), "]");
+//        return stringBuilder.toString();
+//    }
 }
