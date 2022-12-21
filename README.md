@@ -2,7 +2,7 @@
 A Java library for the OT protocols I programmed during my PhD.
 
 [![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Coverage](https://badgen.net/badge/coverage/95%25/green)](https://badgen.net/badge/coverage/95%25/green)
+[![Coverage](https://badgen.net/badge/coverage/100%25/blue)](https://badgen.net/badge/coverage/100%25/blue)
 
 
 ***
@@ -31,6 +31,12 @@ Using this library is straight-forward. The `oblivioustransfer4j` package contai
 <ul>
 <li><a href="https://doi.org/10.1145/2508859.2516738">[ALSZ13] Optimized n x OT_l protocol.
 <br>Gilad Asharov, Yehuda Lindell, Thomas Schneider, and Michael Zohner. 2013. More efficient oblivious transfer and extensions for faster secure computation. In Proceedings of the 2013 ACM SIGSAC conference on Computer & communications security (CCS '13). Association for Computing Machinery, New York, NY, USA, 535–548. https://doi.org/10.1145/2508859.2516738</a> </li>
+</ul>
+
+## Implemented precomputed OT protocols
+<ul>
+<li><a href="https://doi.org/10.1007/3-540-44750-4_8">[BEA95] Precomputed n x OT_l protocol.
+<br>Beaver, D. (1995). Precomputing Oblivious Transfer. In: Coppersmith, D. (eds) Advances in Cryptology — CRYPT0’ 95. CRYPTO 1995. Lecture Notes in Computer Science, vol 963. Springer, Berlin, Heidelberg. https://doi.org/10.1007/3-540-44750-4_8</a></li>
 </ul>
 
 ***
