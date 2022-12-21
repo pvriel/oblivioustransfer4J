@@ -22,7 +22,7 @@ public abstract class PrecomputedObliviousTransferSender<ReturnTypeOfflinePhase>
      *          <br>This array should have the same length as the choices array at the receiver's side, with the second dimension being 2.
      *          <br>Also, no null (sub)-arrays or {@link BigInteger}s are allowed.
      * @param   bitLength
-     *          The maximum bit length of the BigIntegers this receiver should receive.
+     *          The maximum bit length of the BigIntegers the receiver should receive.
      *          <br>Should be the same (greater than zero) value as the one used by the receiver.
      * @param   inputStream
      *          The input from the receiver.
@@ -30,7 +30,6 @@ public abstract class PrecomputedObliviousTransferSender<ReturnTypeOfflinePhase>
      * @param   outputStream
      *          The output to the receiver.
      *          <br>This stream will not be closed after invoking this method.
-     * @return  The chosen, received BigIntegers.
      * @throws  IOException
      *          If the input or output streams throw an IOException during the execution.
      */
