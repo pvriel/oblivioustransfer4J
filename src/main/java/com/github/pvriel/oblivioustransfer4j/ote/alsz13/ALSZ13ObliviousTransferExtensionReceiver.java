@@ -20,6 +20,14 @@ import static com.github.pvriel.oblivioustransfer4j.ote.alsz13.ALSZ13ObliviousTr
  */
 public class ALSZ13ObliviousTransferExtensionReceiver extends ObliviousTransferExtensionReceiver {
 
+    /**
+     * Constructor for the {@link ALSZ13ObliviousTransferExtensionReceiver} class.
+     * @param   amountOfBaseOTs
+     *          The amount of base OTs to use.
+     *          <br>This should be a value of at least one.
+     * @param   baseOTsSender
+     *          The (not-null) {@link ObliviousTransferSender} to use for the base OTs.
+     */
     public ALSZ13ObliviousTransferExtensionReceiver(int amountOfBaseOTs, ObliviousTransferSender baseOTsSender) {
         super(amountOfBaseOTs, baseOTsSender);
     }

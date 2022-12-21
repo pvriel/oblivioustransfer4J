@@ -11,10 +11,18 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 
+/**
+ * Class representing receivers in the <a href="https://doi.org/10.1007/3-540-44750-4_8">BEA95</a> precomputed oblivious transfer protocol.
+ */
 public class BEA95PrecomputedObliviousTransferReceiver extends PrecomputedObliviousTransferReceiver<Pair<boolean[], BigInteger[]>> {
 
     private final ObliviousTransferReceiver underlyingObliviousTransferReceiver;
 
+    /**
+     * Constructor for the {@link BEA95PrecomputedObliviousTransferReceiver} class.
+     * @param   underlyingObliviousTransferReceiver
+     *          The (not-null) underlying oblivious transfer receiver to use.
+     */
     public BEA95PrecomputedObliviousTransferReceiver(ObliviousTransferReceiver underlyingObliviousTransferReceiver) {
         this.underlyingObliviousTransferReceiver = underlyingObliviousTransferReceiver;
     }

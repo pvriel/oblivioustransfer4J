@@ -17,6 +17,14 @@ import java.math.BigInteger;
  */
 public class ALSZ13ObliviousTransferExtensionSender extends ObliviousTransferExtensionSender {
 
+    /**
+     * Constructor for the {@link ALSZ13ObliviousTransferExtensionSender} class.
+     * @param   amountOfBaseOTs
+     *          The amount of base OTs to be executed.
+     *          <br>This should be a value of at least one.
+     * @param   baseOTsReceiver
+     *          The (not-null) {@link ObliviousTransferReceiver} to be used for the base OTs.
+     */
     public ALSZ13ObliviousTransferExtensionSender(int amountOfBaseOTs, ObliviousTransferReceiver baseOTsReceiver) {
         super(amountOfBaseOTs, baseOTsReceiver);
     }
