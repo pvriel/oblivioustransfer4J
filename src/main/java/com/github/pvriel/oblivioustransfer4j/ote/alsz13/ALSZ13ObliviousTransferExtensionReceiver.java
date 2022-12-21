@@ -16,7 +16,7 @@ import static com.github.pvriel.oblivioustransfer4j.ote.alsz13.ALSZ13ObliviousTr
 import static com.github.pvriel.oblivioustransfer4j.ote.alsz13.ALSZ13ObliviousTransferExtensionSender.H;
 
 /**
- * Class representing an implementation of the <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferExtensionReceiver}.
+ * Class representing an implementation of the semi-honest <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferExtensionReceiver}.
  */
 public class ALSZ13ObliviousTransferExtensionReceiver extends ObliviousTransferExtensionReceiver {
 

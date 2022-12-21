@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 /**
- * Class representing an implementation of the <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferExtensionSender}.
+ * Class representing an implementation of the semi-honest <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferExtensionSender}.
  */
 public class ALSZ13ObliviousTransferExtensionSender extends ObliviousTransferExtensionSender {
 

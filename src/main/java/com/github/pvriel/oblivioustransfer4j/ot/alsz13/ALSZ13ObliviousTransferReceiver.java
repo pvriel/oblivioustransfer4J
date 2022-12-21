@@ -12,7 +12,7 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 /**
- * Class representing an implementation of the <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferReceiver}.
+ * Class representing an implementation of the semi-honest <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferReceiver}.
  */
 public class ALSZ13ObliviousTransferReceiver implements ObliviousTransferReceiver {
 

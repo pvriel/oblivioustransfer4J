@@ -12,7 +12,7 @@ import java.math.BigInteger;
 import static com.github.pvriel.oblivioustransfer4j.ot.alsz13.ALSZ13ObliviousTransferReceiver.random;
 
 /**
- * Class representing an implementation of the <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferSender}.
+ * Class representing an implementation of the semi-honest <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferSender}.
  */
 public class ALSZ13ObliviousTransferSender implements ObliviousTransferSender {
 

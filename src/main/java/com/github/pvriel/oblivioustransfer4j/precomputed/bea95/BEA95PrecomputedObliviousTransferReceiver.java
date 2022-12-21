@@ -12,7 +12,7 @@ import java.io.OutputStream;
 import java.math.BigInteger;
 
 /**
- * Class representing receivers in the <a href="https://doi.org/10.1007/3-540-44750-4_8">BEA95</a> precomputed oblivious transfer protocol.
+ * Class representing receivers in the semi-honest <a href="https://doi.org/10.1007/3-540-44750-4_8">BEA95</a> precomputed oblivious transfer protocol.
  */
 public class BEA95PrecomputedObliviousTransferReceiver extends PrecomputedObliviousTransferReceiver<Pair<boolean[], BigInteger[]>> {
 

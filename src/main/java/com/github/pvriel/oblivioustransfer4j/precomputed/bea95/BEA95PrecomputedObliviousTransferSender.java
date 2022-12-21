@@ -11,7 +11,7 @@ import java.io.OutputStream;
 import java.math.BigInteger;
 
 /**
- * Class representing senders in the <a href="https://doi.org/10.1007/3-540-44750-4_8">BEA95</a> precomputed oblivious transfer protocol.
+ * Class representing senders in the semi-honest <a href="https://doi.org/10.1007/3-540-44750-4_8">BEA95</a> precomputed oblivious transfer protocol.
  */
 public class BEA95PrecomputedObliviousTransferSender extends PrecomputedObliviousTransferSender<BigInteger[][]> {
 
