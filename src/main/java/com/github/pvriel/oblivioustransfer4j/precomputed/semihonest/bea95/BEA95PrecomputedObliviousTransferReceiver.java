@@ -1,4 +1,4 @@
-package com.github.pvriel.oblivioustransfer4j.precomputed.bea95;
+package com.github.pvriel.oblivioustransfer4j.precomputed.semihonest.bea95;
 
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferReceiver;
 import com.github.pvriel.oblivioustransfer4j.precomputed.PrecomputedObliviousTransferReceiver;
@@ -14,7 +14,7 @@ import java.math.BigInteger;
 /**
  * Class representing receivers in the semi-honest <a href="https://doi.org/10.1007/3-540-44750-4_8">BEA95</a> precomputed oblivious transfer protocol.
  */
-public class BEA95PrecomputedObliviousTransferReceiver extends PrecomputedObliviousTransferReceiver<Pair<boolean[], BigInteger[]>> {
+public class BEA95PrecomputedObliviousTransferReceiver implements PrecomputedObliviousTransferReceiver<Pair<boolean[], BigInteger[]>> {
 
     private final ObliviousTransferReceiver underlyingObliviousTransferReceiver;
 
@@ -27,14 +27,12 @@ public class BEA95PrecomputedObliviousTransferReceiver extends PrecomputedOblivi
         this.underlyingObliviousTransferReceiver = underlyingObliviousTransferReceiver;
     }
 
-    @Override
     public Pair<boolean[], BigInteger[]> executeOfflinePhase(boolean[] choices, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException {
         boolean[] randomChoices = RandomUtils.generateRandomBooleanArrayOfLength(choices.length);
         BigInteger[] receivedValues = underlyingObliviousTransferReceiver.execute(randomChoices, bitLength, inputStream, outputStream);
         return Pair.of(randomChoices, receivedValues);
     }
 
-    @Override
     public BigInteger[] executeOnlinePhase(Pair<boolean[], BigInteger[]> resultOfflinePhase, boolean[] choices, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException {
         boolean[] choicesOfflinePhase = resultOfflinePhase.getLeft();
         BigInteger b_adjusted = BigInteger.ZERO;

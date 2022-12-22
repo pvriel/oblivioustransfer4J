@@ -1,13 +1,15 @@
-package com.github.pvriel.oblivioustransfer4j.precomputed.bea95;
+package com.github.pvriel.oblivioustransfer4j.precomputed.semihonest.bea95;
 
 import com.github.pvriel.oblivioustransfer4j.ot.AbstractObliviousTransferTest;
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferReceiver;
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferSender;
-import com.github.pvriel.oblivioustransfer4j.ot.alsz13.ALSZ13ObliviousTransferReceiver;
-import com.github.pvriel.oblivioustransfer4j.ot.alsz13.ALSZ13ObliviousTransferSender;
+import com.github.pvriel.oblivioustransfer4j.ot.semihonest.alsz13.ALSZ13ObliviousTransferReceiver;
+import com.github.pvriel.oblivioustransfer4j.ot.semihonest.alsz13.ALSZ13ObliviousTransferSender;
+import com.github.pvriel.oblivioustransfer4j.precomputed.semihonest.bea95.BEA95PrecomputedObliviousTransferReceiver;
+import com.github.pvriel.oblivioustransfer4j.precomputed.semihonest.bea95.BEA95PrecomputedObliviousTransferSender;
 import org.apache.commons.lang3.tuple.Pair;
 
-import static com.github.pvriel.oblivioustransfer4j.ot.alsz13.ALSZ13ObliviousTransferTest.*;
+import static com.github.pvriel.oblivioustransfer4j.ot.semihonest.alsz13.ALSZ13ObliviousTransferTest.*;
 
 class BEA95PrecomputedObliviousTransferTest extends AbstractObliviousTransferTest {
 

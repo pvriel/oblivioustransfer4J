@@ -8,11 +8,11 @@ import java.io.OutputStream;
 import java.math.BigInteger;
 
 /**
- * Abstract class, representing {@link ObliviousTransferReceiver}s, which can perform a part of their computation offline/in advance.
+ * Interface, representing {@link ObliviousTransferReceiver}s, which can perform a part of their computation offline/in advance.
  * @param   <ReturnTypeOfflinePhase>
  *          The (part of the) result of the offline phase that can be reused to execute the online phase with.
  */
-public abstract class PrecomputedObliviousTransferReceiver<ReturnTypeOfflinePhase> implements ObliviousTransferReceiver {
+public interface PrecomputedObliviousTransferReceiver<ReturnTypeOfflinePhase> extends ObliviousTransferReceiver {
     /**
      * Method to execute the complete oblivious transfer protocol.
      * <br>Invoking this method has the same effect as invoking {@link #executeOfflinePhase(boolean[], int, InputStream, OutputStream)} and {@link #executeOnlinePhase(Object, boolean[], int, InputStream, OutputStream)} in sequence.
@@ -33,7 +33,7 @@ public abstract class PrecomputedObliviousTransferReceiver<ReturnTypeOfflinePhas
      *          If the input or output streams throw an IOException during the execution.
      */
     @Override
-    public BigInteger[] execute(boolean[] choices, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException {
+    default BigInteger[] execute(boolean[] choices, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException {
         var resultOfflinePhase = executeOfflinePhase(choices, bitLength, inputStream, outputStream);
         return executeOnlinePhase(resultOfflinePhase, choices, bitLength, inputStream, outputStream);
     }
@@ -56,7 +56,7 @@ public abstract class PrecomputedObliviousTransferReceiver<ReturnTypeOfflinePhas
      * @throws  IOException
      *          If the input or output streams throw an IOException during the execution.
      */
-    public abstract ReturnTypeOfflinePhase executeOfflinePhase(boolean[] choices, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException;
+    ReturnTypeOfflinePhase executeOfflinePhase(boolean[] choices, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException;
 
     /**
      * Method to execute the online phase of the precomputed oblivious transfer protocol.
@@ -79,5 +79,5 @@ public abstract class PrecomputedObliviousTransferReceiver<ReturnTypeOfflinePhas
      * @throws  IOException
      *          If the input or output streams throw an IOException during the execution.
      */
-    public abstract BigInteger[] executeOnlinePhase(ReturnTypeOfflinePhase resultOfflinePhase, boolean[] choices, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException;
+    BigInteger[] executeOnlinePhase(ReturnTypeOfflinePhase resultOfflinePhase, boolean[] choices, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException;
 }

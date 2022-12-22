@@ -1,4 +1,4 @@
-package com.github.pvriel.oblivioustransfer4j.ote.alsz13;
+package com.github.pvriel.oblivioustransfer4j.ote.semihonest;
 
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferReceiver;
 import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionSender;

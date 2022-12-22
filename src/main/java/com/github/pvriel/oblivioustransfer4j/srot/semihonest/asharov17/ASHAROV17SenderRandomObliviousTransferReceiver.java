@@ -1,5 +1,6 @@
-package com.github.pvriel.oblivioustransfer4j.ote.alsz13;
+package com.github.pvriel.oblivioustransfer4j.srot.semihonest.asharov17;
 
+import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferReceiver;
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferSender;
 import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionReceiver;
 import com.github.pvriel.oblivioustransfer4j.utils.ArrayUtils;
@@ -12,23 +13,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 
-import static com.github.pvriel.oblivioustransfer4j.ote.alsz13.ALSZ13ObliviousTransferExtensionSender.G;
-import static com.github.pvriel.oblivioustransfer4j.ote.alsz13.ALSZ13ObliviousTransferExtensionSender.H;
+import static com.github.pvriel.oblivioustransfer4j.srot.semihonest.asharov17.ASHAROV17SenderRandomObliviousTransferSender.G;
+import static com.github.pvriel.oblivioustransfer4j.srot.semihonest.asharov17.ASHAROV17SenderRandomObliviousTransferSender.H;
 
-/**
- * Class representing an implementation of the semi-honest <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferExtensionReceiver}.
- */
-public class ALSZ13ObliviousTransferExtensionReceiver extends ObliviousTransferExtensionReceiver {
+public class ASHAROV17SenderRandomObliviousTransferReceiver extends ObliviousTransferExtensionReceiver {
 
-    /**
-     * Constructor for the {@link ALSZ13ObliviousTransferExtensionReceiver} class.
-     * @param   amountOfBaseOTs
-     *          The amount of base OTs to use.
-     *          <br>This should be a value of at least one.
-     * @param   baseOTsSender
-     *          The (not-null) {@link ObliviousTransferSender} to use for the base OTs.
-     */
-    public ALSZ13ObliviousTransferExtensionReceiver(int amountOfBaseOTs, ObliviousTransferSender baseOTsSender) {
+    public ASHAROV17SenderRandomObliviousTransferReceiver(int amountOfBaseOTs, ObliviousTransferSender baseOTsSender) {
         super(amountOfBaseOTs, baseOTsSender);
     }
 
@@ -55,12 +45,7 @@ public class ALSZ13ObliviousTransferExtensionReceiver extends ObliviousTransferE
         BigInteger[] t_j = T_transposed.getColumns();
 
         BigInteger[] x = new BigInteger[choices.length];
-        for (int j = 0; j < x.length; j ++) {
-            BigInteger y_j_0 = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
-            BigInteger y_j_1 = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
-            x[j] = (choices[j]? y_j_1 : y_j_0).xor(H(j, t_j[j], bitLength));
-        }
-
+        for (int j = 0; j < x.length; j ++) x[j] = H(j, t_j[j], bitLength);
         return x;
     }
 }

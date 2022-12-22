@@ -1,4 +1,4 @@
-package com.github.pvriel.oblivioustransfer4j.ot.alsz13;
+package com.github.pvriel.oblivioustransfer4j.ot.semihonest.alsz13;
 
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferSender;
 import com.github.pvriel.oblivioustransfer4j.utils.KDFUtils;
@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 
-import static com.github.pvriel.oblivioustransfer4j.ot.alsz13.ALSZ13ObliviousTransferReceiver.random;
+import static com.github.pvriel.oblivioustransfer4j.ot.semihonest.alsz13.ALSZ13ObliviousTransferReceiver.random;
 
 /**
  * Class representing an implementation of the semi-honest <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferSender}.

@@ -1,4 +1,4 @@
-package com.github.pvriel.oblivioustransfer4j.ot.alsz13;
+package com.github.pvriel.oblivioustransfer4j.ot.semihonest.alsz13;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;

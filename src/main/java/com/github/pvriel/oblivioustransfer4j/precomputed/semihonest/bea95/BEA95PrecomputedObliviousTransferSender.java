@@ -1,4 +1,4 @@
-package com.github.pvriel.oblivioustransfer4j.precomputed.bea95;
+package com.github.pvriel.oblivioustransfer4j.precomputed.semihonest.bea95;
 
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferSender;
 import com.github.pvriel.oblivioustransfer4j.precomputed.PrecomputedObliviousTransferSender;
@@ -13,7 +13,7 @@ import java.math.BigInteger;
 /**
  * Class representing senders in the semi-honest <a href="https://doi.org/10.1007/3-540-44750-4_8">BEA95</a> precomputed oblivious transfer protocol.
  */
-public class BEA95PrecomputedObliviousTransferSender extends PrecomputedObliviousTransferSender<BigInteger[][]> {
+public class BEA95PrecomputedObliviousTransferSender implements PrecomputedObliviousTransferSender<BigInteger[][]> {
 
     private final ObliviousTransferSender underlyingObliviousTransferSender;
 
@@ -26,14 +26,12 @@ public class BEA95PrecomputedObliviousTransferSender extends PrecomputedObliviou
         this.underlyingObliviousTransferSender = underlyingObliviousTransferSender;
     }
 
-    @Override
     public BigInteger[][] executeOfflinePhase(BigInteger[][] x, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException {
         BigInteger[][] randomValues = RandomUtils.generateRandomBigInteger2DArrayOfLengths(x.length, 2, bitLength);
         underlyingObliviousTransferSender.execute(randomValues, bitLength, inputStream, outputStream);
         return randomValues;
     }
 
-    @Override
     public void executeOnlinePhase(BigInteger[][] resultOfflinePhase, BigInteger[][] x, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException {
         BigInteger b_adjusted = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
         for (int i = 0; i < x.length; i ++) {

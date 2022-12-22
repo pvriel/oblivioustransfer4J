@@ -1,5 +1,8 @@
-package com.github.pvriel.oblivioustransfer4j.ote;
+package com.github.pvriel.oblivioustransfer4j.srot;
 
+import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionReceiver;
+import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionSender;
+import com.github.pvriel.oblivioustransfer4j.utils.RandomUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.junit.jupiter.api.Test;
 
@@ -10,33 +13,29 @@ import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public abstract class AbstractObliviousTransferExtensionTest {
+public abstract class AbstractSROTTest {
 
     public final static int AMOUNT_OF_CHOICES = 1000;
     public final static int MAX_BIT_LENGTH_VALUES = 65536;
     private final static Random random = new Random();
 
-    protected abstract List<Triple<Integer, ObliviousTransferExtensionSender, ObliviousTransferExtensionReceiver>> generateSenderReceiverOTPairsForTesting();
+    protected abstract List<Triple<Integer, RandomObliviousTransferSender, ObliviousTransferExtensionReceiver>> generateSenderReceiverOTPairsForTesting();
 
     @Test
-    void execute() throws IOException, InterruptedException {
+    public void execute() throws IOException, InterruptedException {
         System.out.println(this.getClass().toString());
-        List<Triple<Integer,ObliviousTransferExtensionSender, ObliviousTransferExtensionReceiver>> listWithPairs = generateSenderReceiverOTPairsForTesting();
-        for (var pair : listWithPairs) {
-            System.out.println("Testing with " + pair.getLeft() + " base OTs.");
-            ObliviousTransferExtensionSender sender = pair.getMiddle();
-            ObliviousTransferExtensionReceiver receiver = pair.getRight();
+        for (var triple : generateSenderReceiverOTPairsForTesting()) {
+            Integer amountOfBaseOTs = triple.getLeft();
+            RandomObliviousTransferSender sender = triple.getMiddle();
+            ObliviousTransferExtensionReceiver receiver = triple.getRight();
+            System.out.println("Testing with " + amountOfBaseOTs + " base OTs.");
 
-            for (int i = 1; i <= MAX_BIT_LENGTH_VALUES; i *= 2) {
-                BigInteger[][] x = new BigInteger[AMOUNT_OF_CHOICES][2];
-                boolean[] choices = new boolean[AMOUNT_OF_CHOICES];
-                for (int j = 0; j < AMOUNT_OF_CHOICES; j ++) {
-                    for (int k = 0; k < 2; k ++) x[j][k] = new BigInteger(i, random);
-                    choices[j] = random.nextBoolean();
-                }
+            for (int i = 1; i < MAX_BIT_LENGTH_VALUES; i *= 2) {
+                boolean[] choices = RandomUtils.generateRandomBooleanArrayOfLength(AMOUNT_OF_CHOICES);
 
                 PipedInputStream inOne = new PipedInputStream(100000000);
                 PipedOutputStream outOne = new PipedOutputStream(inOne);
@@ -44,9 +43,11 @@ public abstract class AbstractObliviousTransferExtensionTest {
                 PipedOutputStream outTwo = new PipedOutputStream(inTwo);
 
                 int finalI = i;
+                AtomicReference<BigInteger[][]> atomicX = new AtomicReference<>();
                 Thread senderThread = new Thread(() -> {
                     try {
-                        sender.execute(x, finalI, inOne, outTwo);
+                        var result = sender.execute(AMOUNT_OF_CHOICES, finalI, inOne, outTwo);
+                        atomicX.set(result);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -54,6 +55,7 @@ public abstract class AbstractObliviousTransferExtensionTest {
                 senderThread.start();
                 BigInteger[] receivedValues = receiver.execute(choices, i, inTwo, outOne);
                 senderThread.join();
+                BigInteger[][] x = atomicX.get();
 
                 assertEquals(AMOUNT_OF_CHOICES, receivedValues.length);
                 for (int j = 0; j < AMOUNT_OF_CHOICES; j ++) {
