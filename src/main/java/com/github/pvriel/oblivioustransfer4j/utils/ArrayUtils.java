@@ -41,7 +41,7 @@ public abstract class ArrayUtils {
         return returnValue;
     }
 
-    public static String toString(Object[][] array) {
+    /*public static String toString(Object[][] array) {
         StringBuilder stringBuilder = new StringBuilder("[");
         for (int i = 0; i < array.length; i ++) {
             stringBuilder.append("[");
@@ -52,5 +52,5 @@ public abstract class ArrayUtils {
         }
         stringBuilder.replace(stringBuilder.length() - 2, stringBuilder.length(), "]");
         return stringBuilder.toString();
-    }
+    }*/
 }
