@@ -1,6 +1,5 @@
 package com.github.pvriel.oblivioustransfer4j.srot.semihonest.asharov17;
 
-import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferReceiver;
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferSender;
 import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionReceiver;
 import com.github.pvriel.oblivioustransfer4j.utils.ArrayUtils;
@@ -37,7 +36,7 @@ public class ASHAROV17SenderRandomObliviousTransferReceiver extends ObliviousTra
             t_i[i] = G(k_i[i][0], choices.length);
             G_k_i_1[i] = G(k_i[i][1], choices.length);
             u_i[i] = t_i[i].xor(G_k_i_1[i]).xor(r);
-            StreamUtils.writeToOutputStream(u_i[i], outputStream);
+            StreamUtils.writeBigIntegerToOutputStream(u_i[i], outputStream);
             outputStream.flush();
         }
         BigIntegerMatrix T = new BigIntegerMatrix(t_i, choices.length);

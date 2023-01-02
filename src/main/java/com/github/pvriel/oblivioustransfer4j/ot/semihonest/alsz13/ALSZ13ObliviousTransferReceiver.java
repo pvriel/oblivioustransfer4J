@@ -46,23 +46,23 @@ public class ALSZ13ObliviousTransferReceiver implements ObliviousTransferReceive
             BigInteger g_pow_alpha_i = g.modPow(alpha_i[i], p);
             BigInteger h_i = new BigInteger(p.bitLength(), random).mod(p);
 
-            if (!choices[i]) StreamUtils.writeToOutputStream(g_pow_alpha_i, outputStream);
-            StreamUtils.writeToOutputStream(h_i, outputStream);
-            if (choices[i]) StreamUtils.writeToOutputStream(g_pow_alpha_i, outputStream);
+            if (!choices[i]) StreamUtils.writeBigIntegerToOutputStream(g_pow_alpha_i, outputStream);
+            StreamUtils.writeBigIntegerToOutputStream(h_i, outputStream);
+            if (choices[i]) StreamUtils.writeBigIntegerToOutputStream(g_pow_alpha_i, outputStream);
             outputStream.flush();
         }
 
         // Second and third round.
-        BigInteger u = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
+        BigInteger u = StreamUtils.readBigIntegerFromInputStream( inputStream);
         BigInteger[] x = new BigInteger[choices.length];
         for (int i = 0; i < choices.length; i ++) {
             BigInteger k_i_delta_i = u.modPow(alpha_i[i], p);
             BigInteger kdf = KDFUtils.KDF(k_i_delta_i, bitLength);
 
             BigInteger chosen_v_i;
-            if (choices[i]) StreamUtils.readFromInputStream(BigInteger.class, inputStream);
-            chosen_v_i = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
-            if (!choices[i]) StreamUtils.readFromInputStream(BigInteger.class, inputStream);
+            if (choices[i]) StreamUtils.readBigIntegerFromInputStream( inputStream);
+            chosen_v_i = StreamUtils.readBigIntegerFromInputStream( inputStream);
+            if (!choices[i]) StreamUtils.readBigIntegerFromInputStream( inputStream);
 
             x[i] = chosen_v_i.xor(kdf);
         }

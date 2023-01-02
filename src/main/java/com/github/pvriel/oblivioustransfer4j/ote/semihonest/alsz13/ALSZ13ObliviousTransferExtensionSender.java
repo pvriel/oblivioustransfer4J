@@ -1,4 +1,4 @@
-package com.github.pvriel.oblivioustransfer4j.ote.semihonest;
+package com.github.pvriel.oblivioustransfer4j.ote.semihonest.alsz13;
 
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferReceiver;
 import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionSender;
@@ -41,7 +41,7 @@ public class ALSZ13ObliviousTransferExtensionSender extends ObliviousTransferExt
         BigInteger sAsBigInteger = ArrayUtils.convertToBigInteger(s);
         BigInteger[] q_i = new BigInteger[k_i.length];
         for (int i = 0; i < q_i.length; i ++) {
-            BigInteger u_i = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
+            BigInteger u_i = StreamUtils.readBigIntegerFromInputStream(inputStream);
             q_i[i] = (s[i]? u_i : BigInteger.ZERO).xor(t_i[i]);
         }
         BigIntegerMatrix Q = new BigIntegerMatrix(q_i, x.length);
@@ -50,8 +50,8 @@ public class ALSZ13ObliviousTransferExtensionSender extends ObliviousTransferExt
         for (int j = 0; j < x.length; j ++) {
             BigInteger y_j_0 = x[j][0].xor(H(j, q_j[j], bitLength));
             BigInteger y_j_1 = x[j][1].xor(H(j, q_j[j].xor(sAsBigInteger), bitLength));
-            StreamUtils.writeToOutputStream(y_j_0, outputStream);
-            StreamUtils.writeToOutputStream(y_j_1, outputStream);
+            StreamUtils.writeBigIntegerToOutputStream(y_j_0, outputStream);
+            StreamUtils.writeBigIntegerToOutputStream(y_j_1, outputStream);
             outputStream.flush();
         }
     }

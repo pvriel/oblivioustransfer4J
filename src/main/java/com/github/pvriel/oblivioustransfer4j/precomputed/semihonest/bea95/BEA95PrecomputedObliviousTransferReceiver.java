@@ -37,16 +37,16 @@ public class BEA95PrecomputedObliviousTransferReceiver implements PrecomputedObl
         boolean[] choicesOfflinePhase = resultOfflinePhase.getLeft();
         BigInteger b_adjusted = BigInteger.ZERO;
         for (int i = 0; i <choices.length; i ++) if (choicesOfflinePhase[i] != choices[i]) b_adjusted = b_adjusted.setBit(i); // TODO: maybe not the most efficient method. Fix this.
-        StreamUtils.writeToOutputStream(b_adjusted, outputStream);
+        StreamUtils.writeBigIntegerToOutputStream(b_adjusted, outputStream);
         outputStream.flush();
 
         BigInteger[] receivedValuesOfflinePhase = resultOfflinePhase.getRight();
         BigInteger[] returnValue = new BigInteger[choices.length];
         for (int i = 0; i < choices.length; i ++) {
             BigInteger sb_adjusted;
-            if (choices[i]) StreamUtils.readFromInputStream(BigInteger.class, inputStream);
-            sb_adjusted = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
-            if (!choices[i]) StreamUtils.readFromInputStream(BigInteger.class, inputStream);
+            if (choices[i]) StreamUtils.readBigIntegerFromInputStream( inputStream);
+            sb_adjusted = StreamUtils.readBigIntegerFromInputStream( inputStream);
+            if (!choices[i]) StreamUtils.readBigIntegerFromInputStream( inputStream);
             returnValue[i] = sb_adjusted.xor(receivedValuesOfflinePhase[i]);
         }
         return returnValue;

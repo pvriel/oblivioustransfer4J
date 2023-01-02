@@ -1,4 +1,4 @@
-package com.github.pvriel.oblivioustransfer4j.ote.semihonest;
+package com.github.pvriel.oblivioustransfer4j.ote.semihonest.alsz13;
 
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferSender;
 import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionReceiver;
@@ -12,8 +12,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 
-import static com.github.pvriel.oblivioustransfer4j.ote.semihonest.ALSZ13ObliviousTransferExtensionSender.G;
-import static com.github.pvriel.oblivioustransfer4j.ote.semihonest.ALSZ13ObliviousTransferExtensionSender.H;
+import static com.github.pvriel.oblivioustransfer4j.ote.semihonest.alsz13.ALSZ13ObliviousTransferExtensionSender.G;
+import static com.github.pvriel.oblivioustransfer4j.ote.semihonest.alsz13.ALSZ13ObliviousTransferExtensionSender.H;
 
 /**
  * Class representing an implementation of the semi-honest <a href="https://doi.org/10.1145/2508859.2516738">ALSZ13</a> {@link ObliviousTransferExtensionReceiver}.
@@ -41,13 +41,11 @@ public class ALSZ13ObliviousTransferExtensionReceiver extends ObliviousTransferE
         // OT extension phase.
         BigInteger r = ArrayUtils.convertToBigInteger(choices);
         BigInteger[] t_i = new BigInteger[k_i.length];
-        BigInteger[] G_k_i_1 = new BigInteger[k_i.length];
-        BigInteger[] u_i = new BigInteger[k_i.length];
         for (int i = 0; i < t_i.length; i ++) {
             t_i[i] = G(k_i[i][0], choices.length);
-            G_k_i_1[i] = G(k_i[i][1], choices.length);
-            u_i[i] = t_i[i].xor(G_k_i_1[i]).xor(r);
-            StreamUtils.writeToOutputStream(u_i[i], outputStream);
+            BigInteger G_k_i_1 = G(k_i[i][1], choices.length);
+            BigInteger u_i = t_i[i].xor(G_k_i_1).xor(r);
+            StreamUtils.writeBigIntegerToOutputStream(u_i, outputStream);
             outputStream.flush();
         }
         BigIntegerMatrix T = new BigIntegerMatrix(t_i, choices.length);
@@ -56,8 +54,8 @@ public class ALSZ13ObliviousTransferExtensionReceiver extends ObliviousTransferE
 
         BigInteger[] x = new BigInteger[choices.length];
         for (int j = 0; j < x.length; j ++) {
-            BigInteger y_j_0 = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
-            BigInteger y_j_1 = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
+            BigInteger y_j_0 = StreamUtils.readBigIntegerFromInputStream( inputStream);
+            BigInteger y_j_1 = StreamUtils.readBigIntegerFromInputStream( inputStream);
             x[j] = (choices[j]? y_j_1 : y_j_0).xor(H(j, t_j[j], bitLength));
         }
 

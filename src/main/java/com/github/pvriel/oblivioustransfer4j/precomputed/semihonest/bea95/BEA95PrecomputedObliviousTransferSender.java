@@ -33,14 +33,14 @@ public class BEA95PrecomputedObliviousTransferSender implements PrecomputedObliv
     }
 
     public void executeOnlinePhase(BigInteger[][] resultOfflinePhase, BigInteger[][] x, int bitLength, InputStream inputStream, OutputStream outputStream) throws IOException {
-        BigInteger b_adjusted = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
+        BigInteger b_adjusted = StreamUtils.readBigIntegerFromInputStream( inputStream);
         for (int i = 0; i < x.length; i ++) {
             boolean b_adjusted_i = b_adjusted.testBit(i);
             BigInteger s0_adjusted = (x[i][0]).xor(resultOfflinePhase[i][b_adjusted_i? 1 : 0]);
             BigInteger s1_adjusted = (x[i][1]).xor(resultOfflinePhase[i][b_adjusted_i? 0 : 1]);
 
-            StreamUtils.writeToOutputStream(s0_adjusted, outputStream);
-            StreamUtils.writeToOutputStream(s1_adjusted, outputStream);
+            StreamUtils.writeBigIntegerToOutputStream(s0_adjusted, outputStream);
+            StreamUtils.writeBigIntegerToOutputStream(s1_adjusted, outputStream);
             outputStream.flush();
         }
     }

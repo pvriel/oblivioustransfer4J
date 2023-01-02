@@ -41,13 +41,13 @@ public class ALSZ13ObliviousTransferSender implements ObliviousTransferSender {
         // First part second round.
         BigInteger r = new BigInteger(q.bitLength(), random).mod(q);
         BigInteger u = g.modPow(r, p);
-        StreamUtils.writeToOutputStream(u, outputStream);
+        StreamUtils.writeBigIntegerToOutputStream(u, outputStream);
         outputStream.flush();
 
         // First round + second part second round.
         for (BigInteger[] bigIntegers : x) {
-            BigInteger hi_0 = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
-            BigInteger hi_1 = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
+            BigInteger hi_0 = StreamUtils.readBigIntegerFromInputStream( inputStream);
+            BigInteger hi_1 = StreamUtils.readBigIntegerFromInputStream( inputStream);
             BigInteger ki_0 = hi_0.modPow(r, p);
             BigInteger ki_1 = hi_1.modPow(r, p);
             BigInteger kdf_0 = KDFUtils.KDF(ki_0, bitLength);
@@ -55,8 +55,8 @@ public class ALSZ13ObliviousTransferSender implements ObliviousTransferSender {
             BigInteger vi_0 = bigIntegers[0].xor(kdf_0);
             BigInteger vi_1 = bigIntegers[1].xor(kdf_1);
 
-            StreamUtils.writeToOutputStream(vi_0, outputStream);
-            StreamUtils.writeToOutputStream(vi_1, outputStream);
+            StreamUtils.writeBigIntegerToOutputStream(vi_0, outputStream);
+            StreamUtils.writeBigIntegerToOutputStream(vi_1, outputStream);
             outputStream.flush();
         }
     }

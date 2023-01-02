@@ -1,4 +1,4 @@
-package com.github.pvriel.oblivioustransfer4j.srot.semihonest;
+package com.github.pvriel.oblivioustransfer4j.srot.semihonest.asharov17;
 
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferReceiver;
 import com.github.pvriel.oblivioustransfer4j.ot.ObliviousTransferSender;

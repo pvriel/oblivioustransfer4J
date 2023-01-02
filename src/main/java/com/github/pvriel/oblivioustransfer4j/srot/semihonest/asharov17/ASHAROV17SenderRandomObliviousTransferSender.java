@@ -35,7 +35,7 @@ public class ASHAROV17SenderRandomObliviousTransferSender implements RandomObliv
         BigInteger sAsBigInteger = ArrayUtils.convertToBigInteger(s);
         BigInteger[] q_i = new BigInteger[k_i.length];
         for (int i = 0; i < q_i.length; i ++) {
-            BigInteger u_i = StreamUtils.readFromInputStream(BigInteger.class, inputStream);
+            BigInteger u_i = StreamUtils.readBigIntegerFromInputStream( inputStream);
             q_i[i] = (s[i]? u_i : BigInteger.ZERO).xor(t_i[i]);
         }
         BigIntegerMatrix Q = new BigIntegerMatrix(q_i, amountOfChoices);

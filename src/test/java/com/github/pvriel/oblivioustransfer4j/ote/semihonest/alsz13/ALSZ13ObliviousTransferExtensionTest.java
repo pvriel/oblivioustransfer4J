@@ -7,8 +7,6 @@ import com.github.pvriel.oblivioustransfer4j.ot.semihonest.alsz13.ALSZ13Obliviou
 import com.github.pvriel.oblivioustransfer4j.ote.AbstractObliviousTransferExtensionTest;
 import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionReceiver;
 import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionSender;
-import com.github.pvriel.oblivioustransfer4j.ote.semihonest.ALSZ13ObliviousTransferExtensionReceiver;
-import com.github.pvriel.oblivioustransfer4j.ote.semihonest.ALSZ13ObliviousTransferExtensionSender;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.ArrayList;

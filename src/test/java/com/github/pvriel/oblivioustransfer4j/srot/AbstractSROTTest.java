@@ -1,7 +1,6 @@
 package com.github.pvriel.oblivioustransfer4j.srot;
 
 import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionReceiver;
-import com.github.pvriel.oblivioustransfer4j.ote.ObliviousTransferExtensionSender;
 import com.github.pvriel.oblivioustransfer4j.utils.RandomUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,6 @@ import java.io.PipedOutputStream;
 import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,7 +19,6 @@ public abstract class AbstractSROTTest {
 
     public final static int AMOUNT_OF_CHOICES = 1000;
     public final static int MAX_BIT_LENGTH_VALUES = 65536;
-    private final static Random random = new Random();
 
     protected abstract List<Triple<Integer, RandomObliviousTransferSender, ObliviousTransferExtensionReceiver>> generateSenderReceiverOTPairsForTesting();
 
