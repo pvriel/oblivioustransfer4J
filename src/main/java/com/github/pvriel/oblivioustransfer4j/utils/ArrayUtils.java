@@ -35,6 +35,14 @@ public abstract class ArrayUtils {
         return returnValue;
     }
 
+    /**
+     * Method to convert a {@link BigInteger} instance to a boolean array.
+     * @param   bigInteger
+     *          The {@link BigInteger} instance.
+     * @param   length
+     *          The amount of booleans to return.
+     * @return  The resulting boolean array.
+     */
     public static boolean[] convertFromBigInteger(BigInteger bigInteger, int length) {
         boolean[] returnValue = new boolean[length];
         for (int i = 0; i < length; i ++) if (bigInteger.testBit(length - i - 1)) returnValue[i] = true;

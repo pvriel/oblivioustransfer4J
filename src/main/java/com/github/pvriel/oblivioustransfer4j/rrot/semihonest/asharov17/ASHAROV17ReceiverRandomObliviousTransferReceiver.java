@@ -14,11 +14,22 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 
+/**
+ * Class representing an implementation of the receiver part from the RR-OT protocol of <a href=https://eprint.iacr.org/2016/602>ASHAROV17</a>.
+ */
 public class ASHAROV17ReceiverRandomObliviousTransferReceiver implements RandomObliviousTransferReceiver {
 
     private final int amountOfBaseOTs;
     private final ObliviousTransferSender baseOTsSender;
 
+    /**
+     * Constructor for the {@link ASHAROV17ReceiverRandomObliviousTransferReceiver} class.
+     * @param   amountOfBaseOTs
+     *          The amount of base OTs to use.
+     *          <br>Should be a strictly positive value, and match the value used by the other party.
+     * @param   baseOTsSender
+     *          The not-null {@link ObliviousTransferSender} instance to use for the base OTs.
+     */
     public ASHAROV17ReceiverRandomObliviousTransferReceiver(int amountOfBaseOTs, ObliviousTransferSender baseOTsSender) {
         this.amountOfBaseOTs = amountOfBaseOTs;
         this.baseOTsSender = baseOTsSender;

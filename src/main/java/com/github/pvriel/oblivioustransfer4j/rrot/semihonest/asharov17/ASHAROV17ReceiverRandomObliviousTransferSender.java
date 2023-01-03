@@ -15,8 +15,19 @@ import java.math.BigInteger;
 import static com.github.pvriel.oblivioustransfer4j.rrot.semihonest.asharov17.ASHAROV17ReceiverRandomObliviousTransferReceiver.G;
 import static com.github.pvriel.oblivioustransfer4j.rrot.semihonest.asharov17.ASHAROV17ReceiverRandomObliviousTransferReceiver.H;
 
+/**
+ * Class representing an implementation of the sender part from the RR-OT protocol of <a href=https://eprint.iacr.org/2016/602>ASHAROV17</a>.
+ */
 public class ASHAROV17ReceiverRandomObliviousTransferSender extends ObliviousTransferExtensionSender {
 
+    /**
+     * Constructor for the {@link ASHAROV17ReceiverRandomObliviousTransferSender} class.
+     * @param   amountOfBaseOTs
+     *          The amount of base OTs to use.
+     *          <br>Should be strictly positive, and should match the value used by the other party.
+     * @param   baseOTsReceiver
+     *          The not-null {@link ObliviousTransferReceiver} instance to use for the base OTs.
+     */
     public ASHAROV17ReceiverRandomObliviousTransferSender(int amountOfBaseOTs, ObliviousTransferReceiver baseOTsReceiver) {
         super(amountOfBaseOTs, baseOTsReceiver);
     }
