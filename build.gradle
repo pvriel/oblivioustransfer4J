@@ -49,6 +49,7 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
+            artifactId 'oblivioustransfer4j'
             from(components.java)
         }
     }
