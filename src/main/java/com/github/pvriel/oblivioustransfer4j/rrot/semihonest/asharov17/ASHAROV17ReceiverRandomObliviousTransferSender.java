@@ -45,7 +45,7 @@ public class ASHAROV17ReceiverRandomObliviousTransferSender extends ObliviousTra
         for (int i = 0; i < u_i.length; i ++) {
             u_i[i] = StreamUtils.readBigIntegerFromInputStream(inputStream);
         }
-        IntStream.range(1, q_i.length).forEach(i -> {
+        IntStream.range(1, q_i.length).parallel().forEach(i -> {
             BigInteger G_k_i = G(k_i_s[i], x.length);
             q_i[i] = s[i]? u_i[i - 1].xor(G_k_i) : G_k_i;
         });
@@ -62,7 +62,7 @@ public class ASHAROV17ReceiverRandomObliviousTransferSender extends ObliviousTra
         for (int i = 0; i < x.length; i ++) {
             StreamUtils.writeBigIntegerToOutputStream(y_0[i], outputStream);
             StreamUtils.writeBigIntegerToOutputStream(y_1[i], outputStream);
-            outputStream.flush();
         }
+        outputStream.flush();
     }
 }

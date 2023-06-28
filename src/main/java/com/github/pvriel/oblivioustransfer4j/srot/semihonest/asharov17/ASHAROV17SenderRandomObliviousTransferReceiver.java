@@ -58,10 +58,8 @@ public class ASHAROV17SenderRandomObliviousTransferReceiver extends ObliviousTra
             return T_transposed.getColumns();
         });
 
-        for (int i = 0; i < t_i.length; i ++) {
-            StreamUtils.writeBigIntegerToOutputStream(u_i[i], outputStream);
-            outputStream.flush();
-        }
+        for (int i = 0; i < t_i.length; i ++) StreamUtils.writeBigIntegerToOutputStream(u_i[i], outputStream);
+        outputStream.flush();
 
         BigInteger[] t_j = t_jTask.join();
 

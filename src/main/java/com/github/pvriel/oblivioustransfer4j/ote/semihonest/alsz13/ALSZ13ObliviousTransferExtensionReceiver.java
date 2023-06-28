@@ -58,20 +58,20 @@ public class ALSZ13ObliviousTransferExtensionReceiver extends ObliviousTransferE
             return T_transposed.getColumns();
         });
 
-        for (int i = 0; i < t_i.length; i ++) {
-            StreamUtils.writeBigIntegerToOutputStream(u_i[i], outputStream);
-            outputStream.flush();
-        }
+        for (int i = 0; i < t_i.length; i ++) StreamUtils.writeBigIntegerToOutputStream(u_i[i], outputStream);
+        outputStream.flush();
 
+
+        BigInteger[][] y_j = new BigInteger[choices.length][2];
+        for (int j = 0; j < choices.length; j ++) {
+            y_j[j][0] = StreamUtils.readBigIntegerFromInputStream( inputStream);
+            y_j[j][1] = StreamUtils.readBigIntegerFromInputStream( inputStream);
+        }
         BigInteger[] t_j = t_jTask.join();
-
         BigInteger[] x = new BigInteger[choices.length];
-        for (int j = 0; j < x.length; j ++) {
-            // TODO: add optimization here.
-            BigInteger y_j_0 = StreamUtils.readBigIntegerFromInputStream( inputStream);
-            BigInteger y_j_1 = StreamUtils.readBigIntegerFromInputStream( inputStream);
-            x[j] = (choices[j]? y_j_1 : y_j_0).xor(H(j, t_j[j], bitLength));
-        }
+        IntStream.range(0, x.length).parallel().forEach(j -> {
+            x[j] = (choices[j]? y_j[j][1] : y_j[j][0]).xor(H(j, t_j[j], bitLength));
+        });
 
         return x;
     }

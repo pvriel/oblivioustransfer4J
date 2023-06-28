@@ -66,7 +66,7 @@ public class ALSZ13ObliviousTransferSender implements ObliviousTransferSender {
         for (int i = 0; i < x.length; i ++) {
             StreamUtils.writeBigIntegerToOutputStream(vi_0[i], outputStream);
             StreamUtils.writeBigIntegerToOutputStream(vi_1[i], outputStream);
-            outputStream.flush();
         }
+        outputStream.flush();
     }
 }

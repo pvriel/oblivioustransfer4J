@@ -53,10 +53,9 @@ public class ASHAROV17RandomObliviousTransferReceiver implements RandomOblivious
             BigInteger G_k_1_temp = G(k_i[i][1], amountOfChoices);
             u_i[i - 1] = t_i[i].xor(G_k_1_temp).xor(r);
         });
-        for (int i = 0; i < amountOfBaseOTs - 1; i ++) {
-            StreamUtils.writeBigIntegerToOutputStream(u_i[i], outputStream);
-            outputStream.flush();
-        }
+        for (int i = 0; i < amountOfBaseOTs - 1; i ++) StreamUtils.writeBigIntegerToOutputStream(u_i[i], outputStream);
+        outputStream.flush();
+
 
         BigIntegerMatrix T = new BigIntegerMatrix(t_i, amountOfChoices);
         BigIntegerMatrix T_transposed = T.transpose();

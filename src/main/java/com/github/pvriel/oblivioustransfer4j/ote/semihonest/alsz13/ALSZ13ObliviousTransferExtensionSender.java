@@ -59,8 +59,8 @@ public class ALSZ13ObliviousTransferExtensionSender extends ObliviousTransferExt
         for (int j = 0; j < x.length; j ++) {
             StreamUtils.writeBigIntegerToOutputStream(y[j][0], outputStream);
             StreamUtils.writeBigIntegerToOutputStream(y[j][1], outputStream);
-            outputStream.flush();
         }
+        outputStream.flush();
     }
 
     static BigInteger G(BigInteger element, int bitLength) {

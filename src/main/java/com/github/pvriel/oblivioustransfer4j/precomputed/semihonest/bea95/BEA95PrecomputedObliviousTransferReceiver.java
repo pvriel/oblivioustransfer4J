@@ -51,6 +51,7 @@ public class BEA95PrecomputedObliviousTransferReceiver implements PrecomputedObl
             if (!choices[i]) StreamUtils.readBigIntegerFromInputStream( inputStream);
         }
         BigInteger[] returnValue = new BigInteger[choices.length];
+        // Xor operation is not so expensive to start separate threads for each element.
         for (int i = 0; i < choices.length; i ++) returnValue[i] = sb_adjusted[i].xor(receivedValuesOfflinePhase[i]);
         return returnValue;
     }

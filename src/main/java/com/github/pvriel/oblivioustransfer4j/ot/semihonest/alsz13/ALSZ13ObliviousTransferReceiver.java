@@ -53,8 +53,8 @@ public class ALSZ13ObliviousTransferReceiver implements ObliviousTransferReceive
             if (!choices[i]) StreamUtils.writeBigIntegerToOutputStream(g_pow_alpha_i[i], outputStream);
             StreamUtils.writeBigIntegerToOutputStream(h_i[i], outputStream);
             if (choices[i]) StreamUtils.writeBigIntegerToOutputStream(g_pow_alpha_i[i], outputStream);
-            outputStream.flush();
         }
+        outputStream.flush();
 
         // Second and third round.
         BigInteger u = StreamUtils.readBigIntegerFromInputStream(inputStream);

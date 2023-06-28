@@ -48,7 +48,7 @@ public class BEA95PrecomputedObliviousTransferSender implements PrecomputedObliv
         for (int i = 0; i < x.length; i ++) {
             StreamUtils.writeBigIntegerToOutputStream(s0_adjusted[i], outputStream);
             StreamUtils.writeBigIntegerToOutputStream(s1_adjusted[i], outputStream);
-            outputStream.flush();
         }
+        outputStream.flush();
     }
 }

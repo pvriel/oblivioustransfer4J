@@ -47,15 +47,14 @@ public class ASHAROV17ReceiverRandomObliviousTransferReceiver implements RandomO
         BigInteger r = t_i[0].xor(G_k_0_1);
         boolean[] choices = ArrayUtils.convertFromBigInteger(r, amountOfChoices);
         BigInteger[] u_i = new BigInteger[amountOfBaseOTs - 1];
-        IntStream.range(1, t_i.length).forEach(i -> {
+        IntStream.range(1, t_i.length).parallel().forEach(i -> {
             t_i[i] = G(k_i[i][0], amountOfChoices);
             BigInteger G_k_1 = G(k_i[i][1], amountOfChoices);
             u_i[i - 1] = t_i[i].xor(G_k_1).xor(r);
         });
-        for (BigInteger bigInteger : u_i) {
-            StreamUtils.writeBigIntegerToOutputStream(bigInteger, outputStream);
-            outputStream.flush();
-        }
+        for (BigInteger bigInteger : u_i) StreamUtils.writeBigIntegerToOutputStream(bigInteger, outputStream);
+        outputStream.flush();
+
         BigIntegerMatrix T = new BigIntegerMatrix(t_i, amountOfChoices);
         BigIntegerMatrix T_transposed = T.transpose();
         BigInteger[] t_j = T_transposed.getColumns();
